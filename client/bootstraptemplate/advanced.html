@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>AdvancedResources</title>
+      
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+    <link href="css/nativestyle.css" rel="stylesheet" type="text/css">
+
+     <!-- <link href="column-layout.css" rel="stylesheet"> -->
+      
+  </head>
+  <body id="page-top">
+        <center><img src="img/logo.jpg" alt="Logo"></center>
+    <!-- Navigation -->
+    <a class="menu-toggle rounded" href="#">
+      <i class="fas fa-bars"></i>
+    </a>
+    <nav id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a class="js-scroll-trigger" href="#page-top">WeRise</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="index.html">Home</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="#about">About</a>
+        </li>
+          <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="resources.html">Resources</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="helpothers.html">Help Others</a>
+        </li>
+        <li class="sidebar-nav-item">
+          <a class="js-scroll-trigger" href="connect.html">Stay Connected</a>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- Header -->
+    
+    <!-- About -->
+ 
+    <!-- Services -->
+    <section class="content-section bg-primary text-white text-center" id="services">
+      <div class="container">
+        
+          <div class="content-section-heading">
+            <h1 class="text-secondary mb-5"> You're exploring advanced resources! So proud that you made it here. Solve exciting problems and get ready for interviews!</h1>
+          
+           <!-- <h1> What We Offer</h1>-->
+            
+           
+            <div id="ourdata">
+            <div class="links">
+                </div>
+                
+                
+                
+                
+                
+            </div>
+              
+        </div>
+         
+          <script>
+              var myvar='';
+              $.ajax({
+                // add filter category here
+                  url: "http://localhost:5000/api/resources/all/advance",
+                  type: 'GET',
+                  success: function(data) {
+                    useReturnData(data );  
+                      
+                      //data = res;
+                      //console.log('data in', data);
+                  }
+              })
+              function useReturnData(data){
+                  myvar = data;
+                  
+                  for(var i=0; i < myvar.length; i++) {
+                      console.log('data', myvar[i]);
+                      var node = document.createElement("DIV");
+                      node.setAttribute("CLASS", "jumbotron");
+                      //node.setAttribute("STYLE", "background:red;");
+                      let textLink = document.createElement("A");
+                      let descrip = document.createElement("P");
+                      
+                      textLink.setAttribute("HREF", myvar[i].link);
+                      textLink.setAttribute("STYLE", "color:#545b5b;");
+                      textLink.setAttribute("CLASS", "resourceLink");
+                      textLink.textContent = myvar[i].title;
+                      node.appendChild(textLink);
+                      let imageLink = document.createElement("IMG");
+                      imageLink.setAttribute("SRC", myvar[i].image);
+//                      imageLink.setAttribute("WIDTH", "100px");
+                      //imageLink.setAttribute("CLASS", "resourceImage");
+                      //imageLink.setAttribute("STYLE", "width:10%;");
+                     imageLink.setAttribute("CLASS", "res");
+                      
+                      //intermediate, advance
+                      node.appendChild(imageLink);
+                      descrip.textContent = myvar[i].description;
+                      descrip.setAttribute("CLASS", "des");
+                      
+//                      var textnode = document.createTextNode(myvar[i].title);
+  //                    node.appendChild(textnode)
+                      node.appendChild(descrip);
+                      document.getElementById("ourdata").appendChild(node);
+                      
+                      //trying to make it clickable
+                     // var link = myvar[i].link;
+                    //  console.log('link', link);
+                    //  var a  = document.getElementsByTagName('a');
+                     // a.href = link;
+                      //console.log('a.href', a.href)
+                      
+                      //$( ".links" ).append("<p><a href='google.com'>Goog</a></p>")
+                      
+                      
+                      
+//                      var textnode = document.createTextNode(myvar[i].link);
+//                      console.log('myvar[i].link', myvar[i].link)
+//                      console.log('myvar[i].link = textnode ?', textnode)
+//                      
+//                      
+//                      node.appendChild(textnode);
+//                      document.getElementById("ourdata").appendChild(node);
+                      
+                      
+                      
+                  };
+                  
+//                 for(var i=0; i < myvar.length; i++) {
+//                      console.log('data', myvar[i]);
+//                      var node = document.createElement("li");
+//                      console.log('node', node)
+//                      var textnode = document.createTextNode(myvar[i].link);
+//                      console.log('myvar[i].link', myvar[i].link)
+//                      console.log('myvar[i].link = textnode ?', textnode)
+//                      
+//                      
+//                      node.appendChild(textnode);
+//                      document.getElementById("ourdata").appendChild(node);
+//                      
+//                      
+//                      
+//                  };
+                  
+              };
+              
+              
+              
+              
+              
+//              $('<li/>', {
+//                          html: myvar[i].title
+//                      }).appendTo($(this).find(".ourdata"))
+              
+          </script>
+          
+          
+       
+        
+      </div>
+    </section>
+    <!-- Callout -->
+    
+    <!-- Portfolio -->
+    <!-- Call to Action -->
+
+    <!-- Map -->
+   
+    <!-- Footer -->
+    
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+    
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for this template -->
+    <script src="js/stylish-portfolio.min.js"></script>
+  </body>
+</html>

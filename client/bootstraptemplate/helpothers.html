@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Help Others Out</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/stylish-portfolio.min.css" rel="stylesheet">
+    <!-- Native CSS -->
+    <link href="css/nativestyle.css" rel="stylesheet" type="text/css">
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+ 
+ 
+
+
+  </head>
+  <body class="page-top">
+        <center><img src="img/logo.jpg" alt="Logo"></center>
+        <script>
+       function postData(){
+           let title = document.getElementById("title").value;
+           console.log('title', title);
+
+           let link = document.getElementById("link").value;
+           console.log('link', link);
+
+           let description = document.getElementById("description").value;
+           console.log('description', description);
+
+           let imageUrl = "LPPS-B-Video.png"
+           let category = "advance";
+
+           let dataObj = {
+             "title": title,
+             "link": link,
+             "description": description,
+             "image": imageUrl,
+             "category": category
+           };
+
+       $.ajax({
+         type: "POST",
+         url: "http://localhost:5000/api/resources",
+         data: dataObj,
+         success: () => {
+           console.log('data was summited!')
+         },
+         dataType: "json"
+       });
+
+       window.location.href = "index.html";
+
+       }
+   </script>
+
+   <form class="form-class">
+     <div class="form-group">
+       <label for="exampleFormControlInput1">Title</label>
+       <input type="text" class="form-control" id="title" placeholder="Add Title">
+     </div>
+
+     <div class="form-group">
+       <label for="exampleFormControlInput1">Add Link</label>
+       <input type="text" class="form-control" id="link" placeholder="Add Link">
+     </div>
+
+
+     <div class="form-group">
+       <label for="exampleFormControlSelect1">Select One</label>
+       <select class="form-control" id="choice">
+         <option>Beginner</option>
+         <option>Intermediate</option>
+         <option>Advanced</option>
+         
+       </select>
+     </div>
+
+     <div class="form-group">
+       <label for="exampleFormControlTextarea1">Description</label>
+       <textarea class="form-control" id="description" rows="3"></textarea>
+     </div>
+
+     <div class="form-group">
+         <div class="custom-file">
+           <input type="file" class="custom-file-input" id="inputGroupFile04">
+           <label class="custom-file-label" for="inputGroupFile04">Choose file</label>
+         </div>
+         <div class="form-group sub">
+          <center><button class="btn btn-outline-secondary" type="button" onclick="return postData()" >Submit</button></center>
+         </div>
+       </div>
+   </form>
+  
+  </body>
+  </html>
